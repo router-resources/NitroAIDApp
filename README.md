@@ -375,7 +375,7 @@ Create an Input Field to enter the prompt and the extract the vaiables from the 
 
 Create the following objects.
 
-  ```
+  ```javascript
 let chainID={
 
     amoy:'80002',
