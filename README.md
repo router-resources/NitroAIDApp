@@ -402,10 +402,10 @@ When the variables are extracted , the variables are mapped to the fields in the
 
 Next , we need to create a button on click of which the following tasks take place .
 
-### 1. Extracting the Variables**
-### 2. Getting the Quote**
-### 3. Checking and Setting Allowance**
-### 4. Executing the Transaction**
+### 1. Extracting the Variables
+### 2. Getting the Quote
+### 3. Checking and Setting Allowance
+### 4. Executing the Transaction
 
 ```javascript
  <button  role="button" style={{width:'10em',height:'3em',backgroundColor:'white',borderRadius:'2em',borderColor:'black'}} onClick={async ()=>{
