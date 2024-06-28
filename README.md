@@ -25,7 +25,7 @@ git clone https://github.com/router-resources/NitroAIDApp.git
 npm install
 ```
 
-**Replace [Your_OpenAI_API_KEY] with your OpenAI API Key**
+**Replace Your_OpenAI_API_KEY with your OpenAI API Key**
 
 ![Screenshot 2024-06-28 at 5 59 18 PM](https://github.com/router-resources/NitroAIDApp/assets/124175970/2433e270-4217-49fd-a390-7b3f9e20dab3)
 
@@ -41,4 +41,23 @@ Your application will start running
 
 ### `Setting up the project`
 
+**Downloading necessary Libraries**
+
+Run the following commands in your Coding Terminal to download the necessary libraries required in our project
+
+```
+npm install axios
+```
+
+```
+npm install ethers@5.7.2
+```
+
+```
+npm install openai
+```
+
+***Getting OpenAI API Keys***
+
+Visit [https://openai.com/index/openai-api/](url)
 
