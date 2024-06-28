@@ -8,7 +8,8 @@ The Lastest Version employs a trustless method for managing cross-chain asset tr
 
 In this tutorial we'll be building an AI DApp which can execute CrossChain Transactions based on prompts. 
 
-![Screenshot 2024-06-28 at 5 54 58 PM](https://github.com/router-resources/NitroAIDApp/assets/124175970/1cf2351c-165e-4f8e-87bd-6541699e10da)
+![download](https://github.com/router-resources/NitroAIDApp/assets/124175970/f46ad4ce-af52-4cf5-872e-f4eeb1b1bc9b)
+
 
 
 ## `Running the Application`
