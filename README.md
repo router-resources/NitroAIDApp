@@ -39,7 +39,7 @@ Your application will start running
 
 # `Understanding the Code`
 
-## `Setting up the project`
+## Setting up the project
 
 Run the following commands in your Coding Terminal to download the necessary libraries required in our project
 
@@ -55,7 +55,7 @@ npm install ethers@5.7.2
 npm install openai
 ```
 
-## Getting OpenAI API Key**
+## Getting OpenAI API Key
 
 Visit [https://openai.com/index/openai-api/](url) and click on ***Explore API*** . Make sure to create an account on OpenAI before proceeding with the step.
 
@@ -75,7 +75,7 @@ import axios from "axios"
 import { ethers } from 'ethers';
 ```
 
-## Extract Variable Function**
+## Extract Variable Function
 
 
 The `extractVariables` function is designed to extract specific variables from a given sentence using the OpenAI API. It identifies and extracts the `sourceToken`, `sourceChain`, `desToken`, `desChain`, and `amount` from the sentence based on predefined sets of possible values.
