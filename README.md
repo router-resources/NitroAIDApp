@@ -159,7 +159,7 @@ Given the input sentence `"Transfer 100 USDT from Holsky to Fuji in exchange for
 }
 ```
 
-```Note: For sake for simplicity we are limiting this application for transferring AFTT Tokens between Amoy, Fuji and Holsky``` 
+```Note: For sake for simplicity we are limiting this application for transferring AFTT Tokens between Amoy, Fuji and Holsky only but you can extend it for other tokens and chains as well. For more details please visit [https://github.com/router-resources/SupportedChains/blob/main/supportedchains.js](url)``` 
 
 ## Getting the Quote
 
