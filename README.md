@@ -1,4 +1,4 @@
-## `What is Router Nitro ?`
+y## `What is Router Nitro ?`
 
 Router Nitro is a cross-chain swapping engine or protocol designed to enable cross-chain asset transfers. It serves as a mechanism for seamlessly moving digital assets or tokens between different blockchain networks
 
@@ -158,6 +158,8 @@ Given the input sentence `"Transfer 100 USDT from Holsky to Fuji in exchange for
   "amount": "100"
 }
 ```
+
+```Note: For sake for simplicity we are limiting this application for transferring AFTT Tokens between Amoy, Fuji and Holsky``` 
 
 
 
