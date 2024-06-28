@@ -232,7 +232,7 @@ The `getQuote` function returns the quote data, which typically includes details
 
 In Step 2 of using Nitro, you'll verify and configure the allowance for token transfers. This process allows Router's swap or transfer contract to safely move tokens on your behalf between blockchain networks.
 
-```
+```javascript
 
 import { ethers, Contract } from 'ethers'
 
@@ -345,7 +345,7 @@ This function is responsible for actually executing the transaction. It takes in
 - **`quoteData`**: Quote data obtained from Step 1.
 
 
-```
+```javascript
   const getTransaction = async (params, quoteData) => {
 		const endpoint = "v2/transaction"
 		const txDataUrl = `${PATH_FINDER_API_URL}/${endpoint}`
@@ -366,6 +366,134 @@ This function is responsible for actually executing the transaction. It takes in
 	}
 
 ```
+
+## Create an Input Field 
+
+![Screenshot 2024-06-28 at 6 56 24 PM](https://github.com/router-resources/NitroAIDApp/assets/124175970/081cb1f3-aef5-4ec0-aa63-4508e77bdb5d)
+
+Create an Input Field to enter the prompt and the extract the vaiables from the prompt .
+
+Create the following objects.
+
+  ```
+let chainID={
+
+    amoy:'80002',
+    fuji:'43113',
+    holsky:'17000'
+  
+  }
+  
+  let tokenAddress={
+  
+    aftt:{
+      amoy:'0xBAD6e1AbE5EbEae8a123ef14AcA7024D3F8c45fb',
+      fuji:'0x69dc97bb33e9030533ca2006ab4cef67f4db4125',
+      holsky:'0x5c2c6ab36a6e4e160fb9c529e164b7781f7d255f'
+    }
+  }
+```
+
+When the variables are extracted , the variables are mapped to the fields in the above objects to get the data in terms of Token Addresses and ChainID's
+
+## Submit Button
+
+![Screenshot 2024-06-28 at 6 57 33 PM](https://github.com/router-resources/NitroAIDApp/assets/124175970/8ec213f9-623f-4281-bae2-2c6758a293b4)
+
+Next , we need to create a button on click of which the following tasks take place .
+
+**Extracting the Variables**
+**Getting the Quote**
+**Checking and Setting Allowance**
+**Executing the Transaction**
+
+```javascript
+ <button  role="button" style={{width:'10em',height:'3em',backgroundColor:'white',borderRadius:'2em',borderColor:'black'}} onClick={async ()=>{
+
+        //Extracting Variables
+        const variables=await extractVariables(sentence)
+          if (variables) {
+           
+            const { sourceToken, sourceChain, desToken,desChain, amount } = variables;
+            let resObj={sourceToken:tokenAddress[`${sourceToken.toLowerCase()}`][`${sourceChain.toLowerCase()}`],sourceChain:chainID[`${sourceChain.toLowerCase()}`],
+            desToken:tokenAddress[`${desToken.toLowerCase()}`][`${desChain.toLowerCase()}`],desChain:chainID[`${desChain.toLowerCase()}`],amount:amount}
+            console.log(resObj)
+
+            //Getting the Quote
+            const params ={
+              'fromTokenAddress': resObj.sourceToken,
+              'toTokenAddress': resObj.desToken,
+              'amount': parseFloat(amount)*Math.pow(10,18),
+              'fromTokenChainId': resObj.sourceChain,
+              'toTokenChainId': resObj.desChain, 
+              'partnerId': "0",
+              
+            }
+            
+             const quote=await getQuote(params)
+              setQuoteData(quote)
+              alert(quote.allowanceTo)
+              console.log(quote)
+
+              //Checking and Setting Allowance
+              if(window.ethereum) {
+                console.log('detected');
+            
+                try {
+                const accounts = await window.ethereum.request({
+                  method: "eth_requestAccounts",
+                });
+          
+                console.log(accounts[0])
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+          
+                
+          
+                await checkAndSetAllowance(
+                  signer,
+                 resObj.sourceToken, 
+                  quote.allowanceTo, 
+                  ethers.constants.MaxUint256 
+                );
+                
+                //Executing the Transaction
+                const txResponse = await getTransaction({
+                  'fromTokenAddress': resObj.sourceToken,
+                  'toTokenAddress': resObj.desToken,
+                  'fromTokenChainId': resObj.sourceChain,
+                  'toTokenChainId': resObj.desChain, 
+                  'widgetId': 0, 
+                }, quote); 
+
+                const tx = await signer.sendTransaction(txResponse.txn)
+                try {
+                  await tx.wait();
+                  console.log(`Transaction mined successfully: ${tx.hash}`)
+                  alert(`Transaction mined successfully: ${tx.hash}`)
+                  
+                }
+                catch (error) {
+                  console.log(`Transaction failed with error: ${error}`)
+                }
+               
+                }
+                catch(err) {
+                console.log(err)
+                }
+              }
+          }
+
+        
+       
+      }}>Submit</button>
+```
+
+
+
+
+
+
 
 
 
